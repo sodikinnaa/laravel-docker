@@ -89,7 +89,7 @@ To run this application using the provided Docker configuration:
 6.  **Access the Application**:
     - **Web URL**: [http://localhost:8000](http://localhost:8000)
     - **MySQL Database**:
-        - Host: `127.0.0.1` (Port: `23306`)
+        - Host: `127.0.0.1` (Port: `13307`)
         - Database: `sistem_laravel`
         - Username: `laravel`
         - Password: `laravel_password`
