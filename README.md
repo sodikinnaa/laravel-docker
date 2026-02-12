@@ -57,3 +57,44 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Docker Setup
+
+To run this application using the provided Docker configuration:
+
+1.  **Clone the repository**:
+    ```bash
+    git clone git@github.com:sodikinnaa/laravel-docker.git
+    cd laravel-docker
+    ```
+
+2.  **Ensure Docker is installed** and running on your system.
+
+3.  **Create the required network**:
+    The configuration uses an external network named `baota_net`. Create it if it doesn't need to exist:
+    ```bash
+    docker network create baota_net || true
+    ```
+
+4.  **Navigate to the docker-config directory**:
+    ```bash
+    cd docker-config
+    ```
+
+5.  **Start the services**:
+    ```bash
+    docker-compose up -d --build
+    ```
+
+6.  **Access the Application**:
+    - **Web URL**: [http://localhost:8000](http://localhost:8000)
+    - **MySQL Database**:
+        - Host: `127.0.0.1` (Port: `23306`)
+        - Database: `sistem_laravel`
+        - Username: `laravel`
+        - Password: `laravel_password`
+
+7.  **Stop the services**:
+    ```bash
+    docker-compose down
+    ```
