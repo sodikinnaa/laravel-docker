@@ -99,7 +99,7 @@ To run this application using the provided Docker configuration:
         - Username: `laravel`
         - Password: `laravel_password`
     - **SSH Remote**:
-        - Host: `localhost` (Port: `1022`)
+        - Host: `localhost` (Port: `2022`)
         - User: `dev` or `root`
         - Password: `@111PasswordContainer`
 
@@ -107,3 +107,19 @@ To run this application using the provided Docker configuration:
     ```bash
     docker-compose down
     ```
+
+## Optional: Install ionCube Loader
+
+If you need to install ionCube Loader, you can add the following to your `docker-config/config/docker/Dockerfile`:
+
+```dockerfile
+# Install ionCube Loader
+RUN PHP_VERSION=$(php -r "echo PHP_MAJOR_VERSION.'.'.PHP_MINOR_VERSION;") && \
+    PHP_EXT_DIR=$(php-config --extension-dir) && \
+    cd /tmp && \
+    wget -O ioncube.tar.gz "https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz" && \
+    tar -xzf ioncube.tar.gz && \
+    cp "ioncube/ioncube_loader_lin_${PHP_VERSION}.so" "$PHP_EXT_DIR/" && \
+    echo "zend_extension=ioncube_loader_lin_${PHP_VERSION}.so" > /usr/local/etc/php/conf.d/00-ioncube.ini && \
+    rm -rf /tmp/ioncube*
+```

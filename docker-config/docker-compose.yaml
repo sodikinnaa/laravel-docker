@@ -20,7 +20,7 @@ services:
       - ../:/var/www/html
     ports:
       - "9000:9000"
-      - "1022:22"
+      - "2022:22"
     networks:
       - baota_net
 
