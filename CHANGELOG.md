@@ -1,5 +1,13 @@
 # Release Notes
 
+## v1.0.2 - 2026-02-13
+
+### Docker & SSH Configuration Update
+
+- **SSH Access**: Configured SSH remote access on port `1022` for the `app` container.
+- **Database**: Replaced MariaDB service with MySQL 8.1 in `docker-compose.yaml`.
+- **Documentation**: Updated `README.md` with detailed SSH connection instructions including the new port.
+
 ## [Unreleased](https://github.com/laravel/laravel/compare/v12.11.2...12.x)
 
 ## [v12.11.2](https://github.com/laravel/laravel/compare/v12.11.1...v12.11.2) - 2026-01-19

@@ -88,11 +88,20 @@ To run this application using the provided Docker configuration:
 
 6.  **Access the Application**:
     - **Web URL**: [http://localhost:8000](http://localhost:8000)
-    - **MySQL Database**:
+    - **MySQL Database Local**:
         - Host: `127.0.0.1` (Port: `13307`)
         - Database: `sistem_laravel`
         - Username: `laravel`
         - Password: `laravel_password`
+    - **MySQL Database Docker**:
+        - Host: `laravel-mysql-prod`
+        - Database: `sistem_laravel`
+        - Username: `laravel`
+        - Password: `laravel_password`
+    - **SSH Remote**:
+        - Host: `localhost` (Port: `1022`)
+        - User: `dev` or `root`
+        - Password: `@111PasswordContainer`
 
 7.  **Stop the services**:
     ```bash

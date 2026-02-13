@@ -20,6 +20,7 @@ services:
       - ../:/var/www/html
     ports:
       - "9000:9000"
+      - "1022:22"
     networks:
       - baota_net
 
@@ -37,30 +38,8 @@ services:
     depends_on:
       - app
 
-  # mariadb:
-  #   build:
-  #     context: ..
-  #     dockerfile: docker-config/config/database/mariadb/Dockerfile
-  #   image: laravel-internal-sistem-mariadb-prod
-  #   container_name: laravel-mariadb-prod
-  #   restart: unless-stopped
-  #   ports:
-  #     - "23306:3306"
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: root
-  #     MYSQL_DATABASE: sistem_laravel
-  #     MYSQL_USER: laravel
-  #     MYSQL_PASSWORD: laravel_password
-  #   volumes:
-  #     - mariadb_data:/var/lib/mysql
-  #   networks:
-  #     - baota_net
-
   mysql:
-    build:
-      context: ..
-      dockerfile: docker-config/config/database/mysql/Dockerfile
-    image: laravel-internal-sistem-mysql-prod
+    image: mysql:8.1 # atau mysql:5.7 kalau mau versi lama
     container_name: laravel-mysql-prod
     restart: unless-stopped
     ports:
