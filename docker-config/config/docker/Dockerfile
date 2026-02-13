@@ -27,15 +27,7 @@ RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/
 # SSH login fix. Otherwise user is kicked off after login
 RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
 
-# Install ionCube Loader
-RUN PHP_VERSION=$(php -r "echo PHP_MAJOR_VERSION.'.'.PHP_MINOR_VERSION;") && \
-    PHP_EXT_DIR=$(php-config --extension-dir) && \
-    cd /tmp && \
-    wget -O ioncube.tar.gz "https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz" && \
-    tar -xzf ioncube.tar.gz && \
-    cp "ioncube/ioncube_loader_lin_${PHP_VERSION}.so" "$PHP_EXT_DIR/" && \
-    echo "zend_extension=ioncube_loader_lin_${PHP_VERSION}.so" > /usr/local/etc/php/conf.d/00-ioncube.ini && \
-    rm -rf /tmp/ioncube*
+
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
