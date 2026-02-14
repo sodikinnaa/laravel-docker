@@ -94,7 +94,7 @@ To run this application using the provided Docker configuration:
         - Username: `laravel`
         - Password: `laravel_password`
     - **MySQL Database Docker**:
-        - Host: `laravel-mysql-prod`
+        - Host: `laravel-mysql-dev`
         - Database: `sistem_laravel`
         - Username: `laravel`
         - Password: `laravel_password`

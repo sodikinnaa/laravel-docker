@@ -50,7 +50,6 @@ RUN mkdir -p /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 /var/www/html/bootstrap/cache
 
 # Copy and setup startup script
-# Copy and setup startup script
 COPY docker-config/start.sh /usr/local/bin/start-container.sh
 RUN sed -i 's/\r$//' /usr/local/bin/start-container.sh && chmod +x /usr/local/bin/start-container.sh
 

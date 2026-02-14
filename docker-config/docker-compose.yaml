@@ -12,8 +12,8 @@ services:
     build:
       context: ..
       dockerfile: docker-config/Dockerfile
-    image: laravel-internal-sistem-app-prod
-    container_name: laravel-app-prod
+    image: laravel-internal-sistem-app-dev
+    container_name: laravel-app-dev
     restart: unless-stopped
     working_dir: /var/www/html
     volumes:
@@ -23,10 +23,11 @@ services:
       - "2022:22"
     networks:
       - baota_net
+    command: /usr/local/bin/start-container.sh
 
   mysql:
     image: mysql:8.1 # atau mysql:5.7 kalau mau versi lama
-    container_name: laravel-mysql-prod
+    container_name: laravel-mysql-dev
     restart: unless-stopped
     ports:
       - "13307:3306"
