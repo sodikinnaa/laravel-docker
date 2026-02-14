@@ -76,14 +76,14 @@ To run this application using the provided Docker configuration:
     docker network create baota_net || true
     ```
 
-4.  **Navigate to the docker-config directory**:
+4.  **Start the services**:
+    From the root directory:
     ```bash
-    cd docker-config
+    docker compose -f docker-config/docker-compose.yaml up --build
     ```
-
-5.  **Start the services**:
+    Or if you are inside `docker-config` directory:
     ```bash
-    docker-compose up -d --build
+    docker compose up --build
     ```
 
 6.  **Access the Application**:
@@ -98,12 +98,8 @@ To run this application using the provided Docker configuration:
         - Database: `sistem_laravel`
         - Username: `laravel`
         - Password: `laravel_password`
-    - **SSH Remote**:
-        - Host: `localhost` (Port: `2022`)
-        - User: `dev` or `root`
-        - Password: `@111PasswordContainer`
 
-7.  **Stop the services**:
+6.  **Stop the services**:
     ```bash
-    docker-compose down
+    docker compose down
     ```
