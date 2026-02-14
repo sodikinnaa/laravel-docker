@@ -11,7 +11,7 @@ services:
   app:
     build:
       context: ..
-      dockerfile: docker-config/config/docker/Dockerfile
+      dockerfile: docker-config/Dockerfile
     image: laravel-internal-sistem-app-prod
     container_name: laravel-app-prod
     restart: unless-stopped
@@ -19,24 +19,10 @@ services:
     volumes:
       - ../:/var/www/html
     ports:
-      - "9000:9000"
+      - "8000:8000"
       - "2022:22"
     networks:
       - baota_net
-
-  nginx:
-    image: nginx:alpine
-    container_name: laravel-nginx-prod
-    restart: unless-stopped
-    ports:
-      - "8000:80"
-    volumes:
-      - ../:/var/www/html
-      - ./config/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-    networks:
-      - baota_net
-    depends_on:
-      - app
 
   mysql:
     image: mysql:8.1 # atau mysql:5.7 kalau mau versi lama

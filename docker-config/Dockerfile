@@ -11,9 +11,7 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     libzip-dev \
-    wget \
     sudo \
-    dos2unix \
     openssh-server \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd intl zip \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -21,8 +19,8 @@ RUN apt-get update && apt-get install -y \
 # Configure SSH
 RUN mkdir -p /var/run/sshd
 RUN useradd -m -s /bin/bash -G sudo dev && \
-    echo 'dev:@111PasswordContainer' | chpasswd && \
-    echo 'root:@111PasswordContainer' | chpasswd
+    echo 'dev:@222ContainerPW' | chpasswd && \
+    echo 'root:@222ContainerPW' | chpasswd
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 # SSH login fix. Otherwise user is kicked off after login
 RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
@@ -52,10 +50,11 @@ RUN mkdir -p /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 /var/www/html/bootstrap/cache
 
 # Copy and setup startup script
-COPY docker-config/config/docker/start-container.sh /usr/local/bin/start-container.sh
-RUN dos2unix /usr/local/bin/start-container.sh && chmod +x /usr/local/bin/start-container.sh
+# Copy and setup startup script
+COPY docker-config/start.sh /usr/local/bin/start-container.sh
+RUN sed -i 's/\r$//' /usr/local/bin/start-container.sh && chmod +x /usr/local/bin/start-container.sh
 
-# Expose port 9000 for FPM and 22 for SSH
-EXPOSE 9000 22
+# Expose port 8000 for artisan serve and 22 for SSH
+EXPOSE 8000 22
 
 CMD ["/usr/local/bin/start-container.sh"]
