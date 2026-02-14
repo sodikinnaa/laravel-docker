@@ -67,34 +67,32 @@ To run this application using the provided Docker configuration:
     git clone git@github.com:sodikinnaa/laravel-docker.git
     cd laravel-docker
     ```
+2.  **Update Composer**:
+    ```bash
+    composer update
+    ```
+3.  **Ensure Docker is installed** and running on your system.
 
-2.  **Ensure Docker is installed** and running on your system.
-
-3.  **Create the required network**:
+4.  **Create the required network**:
     The configuration uses an external network named `baota_net`. Create it if it doesn't need to exist:
     ```bash
     docker network create baota_net || true
     ```
 
-4.  **Navigate to the docker-config directory**:
+5.  **Navigate to the docker-config directory**:
     ```bash
     cd docker-config
     ```
 
-5.  **Start the services**:
+6.  **Start the services**:
     ```bash
     docker-compose up -d --build
     ```
 
-6.  **Access the Application**:
+7.  **Access the Application**:
     - **Web URL**: [http://localhost:8000](http://localhost:8000)
     - **MySQL Database Local**:
         - Host: `127.0.0.1` (Port: `13307`)
-        - Database: `sistem_laravel`
-        - Username: `laravel`
-        - Password: `laravel_password`
-    - **MySQL Database Docker**:
-        - Host: `laravel-mysql-dev`
         - Database: `sistem_laravel`
         - Username: `laravel`
         - Password: `laravel_password`
@@ -103,7 +101,7 @@ To run this application using the provided Docker configuration:
         - User: `dev` or `root`
         - Password: `@111PasswordContainer`
 
-7.  **Stop the services**:
+8.  **Stop the services**:
     ```bash
     docker-compose down
     ```

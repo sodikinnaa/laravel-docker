@@ -36,4 +36,3 @@ RUN mkdir -p /var/www/html/storage /var/www/html/bootstrap/cache \
 # Expose port 8000 for artisan serve
 EXPOSE 8000
 
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]

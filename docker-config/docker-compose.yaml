@@ -12,7 +12,6 @@ services:
     build:
       context: ..
       dockerfile: docker-config/Dockerfile
-    image: laravel-internal-sistem-app-dev
     container_name: laravel-app-dev
     restart: unless-stopped
     working_dir: /var/www/html
@@ -20,6 +19,7 @@ services:
       - ../:/var/www/html
     ports:
       - "8000:8000"
+    command: sh -c "composer update && php artisan key:generate && php artisan migrate && php artisan serve --host=0.0.0.0 --port=8000"
     networks:
       - baota_net
 
