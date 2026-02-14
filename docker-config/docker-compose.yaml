@@ -20,10 +20,8 @@ services:
       - ../:/var/www/html
     ports:
       - "8000:8000"
-      - "2022:22"
     networks:
       - baota_net
-    command: /usr/local/bin/start-container.sh
 
   mysql:
     image: mysql:8.1 # atau mysql:5.7 kalau mau versi lama
