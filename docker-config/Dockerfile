@@ -20,7 +20,7 @@ WORKDIR /var/www/html
 COPY composer.json composer.lock* /var/www/html/
 
 # Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction || true
+RUN composer update --no-dev --optimize-autoloader --no-interaction || true
 
 # Copy application files
 COPY . /var/www/html
